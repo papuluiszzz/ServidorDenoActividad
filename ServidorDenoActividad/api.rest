@@ -12,3 +12,17 @@ Content-Type: application/json
   "email": "carlos.gomez@gmail.com",
   "telefono": "3159876543"
 }
+
+### Actualizar un Cliente
+PUT http://localhost:8000/cliente
+Content-Type: application/json
+
+{
+  "idCliente": "1",
+  "nombre": "Luis",
+  "apellido": "Gomez Ramirez",
+  "email": "carlos.gomez@gmail.com",
+  "telefono": "3159876543"
+}
+
+

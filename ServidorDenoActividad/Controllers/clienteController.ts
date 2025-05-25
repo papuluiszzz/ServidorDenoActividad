@@ -2,6 +2,7 @@
 
 import { Cliente } from "../Models/cliente.ts"; 
 
+
 export const getCliente = async(ctx:any)=>{
     const {response} = ctx;
 
@@ -60,5 +61,88 @@ export const postCliente = async(ctx:any)=>{
             errors:error
         }
 
+    }
+    
+};
+export const putCliente = async(ctx: any)=>{
+    const {response,request} = ctx;
+
+    try{
+        const contentLength = request.headers.get("Content-length");
+
+        if (contentLength === "0") {
+
+            response.status = 400;
+            response.body = {success: false,  message: "Cuerpo de la solicitud esta vacio"};
+            return;
+        }
+
+        const body = await request.body.json();
+        const ClienteData = {
+
+            idCliente: body.idCliente,
+            nombre: body.nombre,
+            apellido: body.apellido,
+            email: body.email,
+            telefono: body.telefono,
+        }
+
+        const objCliente = new Cliente(ClienteData);
+        const result = await objCliente.ActualizarCliente();
+        response.status = 200;
+        response.body = {
+            success:true,
+            body:result,
+        };
+
+    }catch(error){
+        response.status = 400;
+        response.body = {
+            success:false,
+            message:"Error al procesar la solicitud"
+        }
+    }
+};
+
+export const deleteCliente = async (ctx: any) => {
+    const { response, request } = ctx;
+    try {
+        const contentLength = request.headers.get("Content-Length");
+        if (contentLength === "0") {
+            response.status = 400;
+            response.body = { success: false, message: "El ID del cliente es requerido para eliminarlo" };
+            return;
+        }
+
+        const body = await request.body.json();
+        if (!body.idCliente) {
+            response.status = 400;
+            response.body = { success: false, message: "El ID del cliente es requerido para eliminarlo" };
+            return;
+        }
+
+        // Forma más consistente de crear el objeto Cliente para eliminación
+        const ClienteData = {
+            idCliente: body.idCliente,
+            nombre: "",
+            apellido: "",
+            email: "",
+            telefono: ""
+        };
+        
+        const objCliente = new Cliente(ClienteData);
+        const result = await objCliente.EliminarCliente();
+
+        response.status = 200;
+        response.body = {
+            success: true,
+            body: result,
+        };
+    } catch (error) {
+        response.status = 400;
+        response.body = {
+            success: false,
+            message: "Error al procesar la solicitud"
+        }
     }
 };
