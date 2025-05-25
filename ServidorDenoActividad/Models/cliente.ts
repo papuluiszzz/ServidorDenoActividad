@@ -90,11 +90,11 @@ export class Cliente {
             if (result && typeof result.affectedRows === "number" && result.affectedRows > 0) {
                 
                 const [cliente] = await conexion.query(
-                    `SELECT * FROM instructor WHERE idinstructor = ?`,[idCliente]
+                    `SELECT * FROM clientes WHERE idCliente = ?`,[idCliente]
                 );
 
                 await conexion.execute("COMMIT");
-                return{ success: true, message:"instructor Actualizado correctamente",cliente:cliente};
+                return{ success: true, message:"Cliente Actualizado correctamente",cliente:cliente};
             }else{
 
                 throw new Error("No fue posible actualizar el cliente")

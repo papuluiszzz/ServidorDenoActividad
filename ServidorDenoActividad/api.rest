@@ -25,4 +25,12 @@ Content-Type: application/json
   "telefono": "3159876543"
 }
 
+### Eliminar un Cliente
+DELETE http://localhost:8000/cliente
+Content-Type: application/json
+
+{
+  "idCliente": 1
+}
+
 

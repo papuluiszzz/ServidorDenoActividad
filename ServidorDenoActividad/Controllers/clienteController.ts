@@ -68,7 +68,7 @@ export const putCliente = async(ctx: any)=>{
     const {response,request} = ctx;
 
     try{
-        const contentLength = request.headers.get("Content-length");
+        const contentLength = request.headers.get("Content-Length");
 
         if (contentLength === "0") {
 
