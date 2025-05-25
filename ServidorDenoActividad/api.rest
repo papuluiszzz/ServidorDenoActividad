@@ -7,9 +7,9 @@ POST  http://localhost:8000/cliente
 Content-Type: application/json
 
 {
-  "nombre": "Carlos",
-  "apellido": "Gomez",
-  "email": "carlos.gomez@gmail.com",
+  "nombre": "Luis",
+  "apellido": "Salamanca",
+  "email": "Salamanca@gmail.com",
   "telefono": "3159876543"
 }
 
@@ -20,8 +20,8 @@ Content-Type: application/json
 {
   "idCliente": "1",
   "nombre": "Luis",
-  "apellido": "Gomez Ramirez",
-  "email": "carlos.gomez@gmail.com",
+  "apellido": "Ramirez",
+  "email": "gomez@gmail.com",
   "telefono": "3159876543"
 }
 
@@ -31,6 +31,42 @@ Content-Type: application/json
 
 {
   "idCliente": 1
+}
+
+### Obtener todas las mascotas
+GET http://localhost:8000/mascota
+
+### Crear una nueva mascota
+POST http://localhost:8000/mascota
+Content-Type: application/json
+
+{
+  "nombre": "Bruno",
+  "especie": "Perro",
+  "raza": "Lobo",
+  "edad": 3,
+  "idCliente": 2
+}
+
+### Actualizar una mascota
+PUT http://localhost:8000/mascota
+Content-Type: application/json
+
+{
+  "idMascota": 1,
+  "nombre": "Max Jr",
+  "especie": "Perro",
+  "raza": "Golden Retriever",
+  "edad": 4,
+  "idCliente": 2
+}
+
+### Eliminar una mascota
+DELETE http://localhost:8000/mascota
+Content-Type: application/json
+
+{
+  "idMascota": 1
 }
 
 
