@@ -1,5 +1,4 @@
 // deno-lint-ignore-file
-import { replaceParams } from "https://deno.land/x/sql_builder@v1.9.1/util.ts";
 import { ensureDir,extname } from "../Dependencies/dependencias.ts";
 
 export const uploadFile = async(ctx:any) =>{
@@ -14,7 +13,7 @@ export const uploadFile = async(ctx:any) =>{
             response.body = {
 
                 success:false,
-                message:"Content-type debe ser multiplataforma"
+                message:"Content-type debe ser multipart/form-data"
             };
             return;
 
@@ -29,7 +28,7 @@ export const uploadFile = async(ctx:any) =>{
             response.status = 400;
             response.body = {
                 success:false,
-                MessageChannel:"No se encontro el archivo en el campo file"
+                message:"No se encontro el archivo en el campo file"
             };
             return;
 
@@ -93,7 +92,7 @@ export const uploadFile = async(ctx:any) =>{
                 size:file.size,
                 type:file.type,
                 uploadedAt: new Date().toISOString(),
-                url: `/files${fileName}`
+                url: `/files/${fileName}`
             }
         };
     }catch(error){
