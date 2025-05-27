@@ -5,7 +5,7 @@ const routerFile = new Router();
 
 routerFile.post("/archivosubidas",uploadFile);
 routerFile.get("/archivolistar",listFiles);
-routerFile.get("/nombre/:archivoname",getFile);
+routerFile.get("/files/:filename",getFile);
 routerFile.delete("/archivoeliminar",deleteFile);
 
 export {routerFile};
