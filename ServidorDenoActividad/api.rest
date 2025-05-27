@@ -53,7 +53,7 @@ PUT http://localhost:8000/mascota
 Content-Type: application/json
 
 {
-  "idMascota": 1,
+  "idMascota": 2,
   "nombre": "Max Jr",
   "especie": "Perro",
   "raza": "Golden Retriever",
